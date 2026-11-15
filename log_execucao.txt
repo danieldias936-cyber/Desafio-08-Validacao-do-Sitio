@@ -1,0 +1,85 @@
+Base: 43 medições em 9 parcelas
+Idade (anos): de 2.58 a 6.37 
+Hd (m): de 11.1 a 26.3 
+
+Curva-guia (Chapman-Richards):
+     Estimate Std. Error   t value  Pr(>|t|)
+b0 34.0484124 20.9038514 1.6288105 0.1112049
+b1  0.1555677  0.2628577 0.5918325 0.5572932
+b2  0.8461438  0.5262351 1.6079196 0.1157186
+
+       n       r2 r2_ajust    syx_m  syx_pct   rmse_m      aic 
+ 43.0000   0.7874   0.7768   1.8118   9.7204   1.7475 178.0323 
+
+Teste das idades-índice:
+ idade_indice    sqd vies_medio desvio_abs_medio desvio_abs_max
+          4.0 198.72   -4.58925            4.589          6.469
+          4.5 156.29   -3.92158            3.922          6.321
+          5.0  87.16   -2.75730            2.801          5.223
+          5.5  26.61   -1.25925            1.532          2.723
+          6.0  31.63   -1.03930            1.479          3.502
+          6.5  23.29   -0.08095            1.227          2.664
+          7.0  29.18    0.73417            1.576          3.458
+ parcelas_mesma_classe
+                     2
+                     2
+                     3
+                     4
+                     4
+                     5
+                     4
+
+Idade-índice selecionada (menor SQD): 6.5 anos
+
+Comparação S fornecido × S calculado (Ii = 6.5 anos):
+ talhao parcela id_parcela idade_usada hd_usada s_fornecido s_calculado
+      1       1      T1-P1       5.625     18.5          20       19.91
+      1       5      T1-P5       5.625     19.7          20       21.21
+      2       2      T2-P2       6.303     24.2          22       24.57
+      2       3      T2-P3       6.303     21.8          22       22.13
+      2       5      T2-P5       6.303     21.2          22       21.53
+      3       1      T3-P1       6.294     21.0          24       21.34
+      3       2      T3-P2       6.294     24.3          24       24.69
+      3       3      T3-P3       6.294     21.0          24       21.34
+      6       1      T6-P1       6.372     26.3          26       26.56
+ diferenca classe_calculada
+   -0.0857               20
+    1.2060               22
+    2.5714               24
+    0.1346               22
+   -0.4746               22
+   -2.6636               22
+    0.6892               24
+   -2.6636               22
+    0.5576               26
+
+Robustez a valores iniciais (mesma solução = ajuste estável):
+ b0_ini b1_ini b2_ini     b0      b1      b2 sq_residuos
+     25   0.50    1.5 34.048 0.15557 0.84615      131.31
+     40   0.10    0.8 34.048 0.15557 0.84615      131.31
+     50   0.05    0.7 34.048 0.15557 0.84615      131.31
+
+Sensibilidade à formulação (SQD por idade-índice):
+ idade_indice sqd_chapman_richards sqd_schumacher
+          4.0               198.72         198.19
+          4.5               156.29         153.68
+          5.0                87.16          92.57
+          5.5                26.61          25.11
+          6.0                31.63          30.42
+          6.5                23.29          23.05
+          7.0                29.18          24.68
+Schumacher: a = 3.4862 ; b = -2.3759 ; R² = 0.7969 
+
+S calculado por talhão (média, mínimo e máximo das parcelas):
+ talhao s_fornecido s_calculado s_calc_min s_calc_max
+      1          20       20.56      19.91      21.21
+      2          22       22.74      21.53      24.57
+      3          24       22.45      21.34      24.69
+      6          26       26.56      26.56      26.56
+
+Arquivos gravados em saidas :
+ [1] "base_consolidada_sitio.csv"     "comparacao_sitio_detalhada.csv"
+ [3] "comparacao_sitio.csv"           "curva_guia_ajustada.csv"       
+ [5] "feixe_curvas_sitio.png"         "log_execucao.txt"              
+ [7] "selecao_idade_indice.png"       "sensibilidade_formulacao.csv"  
+ [9] "sitio_por_talhao.csv"           "teste_idades_indice.csv"       
