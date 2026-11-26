@@ -10,6 +10,7 @@ O objetivo é reproduzir de forma independente o índice de local (S) das parcel
 desafio-08-validacao-sitio/
 ├── README.md
 ├── relatorio.md                      # relatório curto (gráfico, tabela e discussão)
+├── Relatorio_Desafio08.docx          # mesmo relatório em Word
 ├── desafio08_validacao_sitio.R       # script comentado
 ├── dados/
 │   └── Dados_Clutter_original.xlsx
