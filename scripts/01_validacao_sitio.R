@@ -22,8 +22,10 @@ suppressPackageStartupMessages({
 })
 
 arquivo_dados <- "dados/Dados_Clutter_original.xlsx"
-pasta_saida   <- "saidas"
-dir.create(pasta_saida, showWarnings = FALSE)
+pasta_saida   <- "resultados/tabelas"
+pasta_fig   <- "resultados/figuras"
+dir.create(pasta_saida, recursive = TRUE, showWarnings = FALSE)
+dir.create(pasta_fig, recursive = TRUE, showWarnings = FALSE)
 
 # Grade de idades-índice a testar (anos) e classes de sítio da base (m)
 idades_indice <- seq(4, 7, by = 0.5)
@@ -269,7 +271,7 @@ g <- ggplot() +
        subtitle = "Pontos: medições das 9 parcelas, identificadas pelo S fornecido na base") +
   theme_bw(base_size = 11) +
   theme(legend.position = "bottom")
-ggsave(file.path(pasta_saida, "feixe_curvas_sitio.png"), g, width = 7.5, height = 5.5, dpi = 300)
+ggsave(file.path(pasta_fig, "feixe_curvas_sitio.png"), g, width = 7.5, height = 5.5, dpi = 300)
 
 g2 <- ggplot(teste, aes(idade_indice, sqd)) +
   geom_line() + geom_point(size = 2) +
@@ -278,7 +280,7 @@ g2 <- ggplot(teste, aes(idade_indice, sqd)) +
        y = "SQD entre S calculado e S fornecido (m²)",
        title = "Seleção da idade-índice") +
   theme_bw(base_size = 11)
-ggsave(file.path(pasta_saida, "selecao_idade_indice.png"), g2, width = 6, height = 4, dpi = 300)
+ggsave(file.path(pasta_fig, "selecao_idade_indice.png"), g2, width = 6, height = 4, dpi = 300)
 
 cat("\nArquivos gravados em", pasta_saida, ":\n")
 print(list.files(pasta_saida))

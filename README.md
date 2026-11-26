@@ -1,63 +1,106 @@
-# Desafio 08 — Classificação de sítio: validação e preparação da base para o modelo de Clutter
+<div align="center">
 
-Projeto C531 (talhões 1, 2, 3 e 6), 9 parcelas permanentes e 43 medições.
+# 🌲 Desafio 08 — Validação do índice de sítio
 
-O objetivo é reproduzir de forma independente o índice de local (S) das parcelas a partir da altura dominante (Hd) e da idade, pelo método da curva-guia, comparar o resultado com o S fornecido em `Dados_Clutter_original.xlsx` e gerar a base consolidada que será usada no Desafio 09.
+**Curva-guia e preparação da base para o modelo de Clutter**
 
-## Estrutura da pasta
+![R](https://img.shields.io/badge/R-4.3-276DC3?logo=r&logoColor=white) ![Disciplina](https://img.shields.io/badge/Mensura%C3%A7%C3%A3o%20Florestal-ICA%2FUFMG-2E7D32) ![Semestre](https://img.shields.io/badge/semestre-2026%2F2-6D4C41) ![Status](https://img.shields.io/badge/status-conclu%C3%ADdo-success)
 
-```
-desafio-08-validacao-sitio/
-├── README.md
-├── relatorio.md                      # relatório curto (gráfico, tabela e discussão)
-├── desafio08_validacao_sitio.R       # script comentado
+*Disciplina Mensuração Florestal · Programa de Pós-Graduação em Ciências Florestais · ICA/UFMG*
+
+</div>
+
+## 📋 Objetivo
+
+Reproduzir de forma independente o índice de sítio (S) das parcelas pelo método da curva-guia, comparar com o S fornecido e gerar a base consolidada usada no [Desafio 09](https://github.com/danieldias936-cyber/desafio-09).
+
+## 🗂️ Dados
+
+Projeto C531, talhões 1, 2, 3 e 6: 9 parcelas permanentes e 43 medições.
+
+Arquivo: [`dados/Dados_Clutter_original.xlsx`](dados/Dados_Clutter_original.xlsx).
+
+## 🔧 Métodos
+
+- Curva-guia de Chapman-Richards: Hd = b₀ · (1 − e<sup>−b₁·idade</sup>)<sup>b₂</sup>.
+- Idade-índice escolhida pela menor soma de quadrados dos desvios entre S calculado e S fornecido.
+- Teste de sensibilidade com o modelo de Schumacher.
+
+## 📈 Principais resultados
+
+- **Idade-índice selecionada: 6,5 anos.**
+- Ajuste: R² = 0,787; Syx = 1,81 m (9,7%).
+
+| Talhão | S fornecido (m) | S calculado (m) |
+|:-:|:-:|:-:|
+| 1 | 20 | 20,6 |
+| 2 | 22 | 22,7 |
+| 3 | 24 | 22,5 |
+| 6 | 26 | 26,6 |
+
+- O S fornecido é reprodutível em linhas gerais; as discrepâncias se concentram no talhão 3 e refletem a atribuição de S por talhão, não um problema do modelo.
+
+<p align="center">
+  <img src="resultados/figuras/feixe_curvas_sitio.png" alt="Feixe de curvas de índice de sítio" width="720"><br>
+  <sub><b>Feixe de curvas de índice de sítio</b></sub>
+</p>
+
+<p align="center">
+  <img src="resultados/figuras/selecao_idade_indice.png" alt="Seleção da idade-índice" width="720"><br>
+  <sub><b>Seleção da idade-índice</b></sub>
+</p>
+
+## 📁 Estrutura do repositório
+
+```text
+desafio-08/
 ├── dados/
 │   └── Dados_Clutter_original.xlsx
-└── saidas/
-    ├── curva_guia_ajustada.csv       # coeficientes, idade-índice e métricas  (saída exigida)
-    ├── comparacao_sitio.csv          # talhao, parcela, s_fornecido, s_calculado, diferenca  (saída exigida)
-    ├── base_consolidada_sitio.csv    # talhao, parcela, id, hd, b, v, s  (saída exigida)
-    ├── teste_idades_indice.csv       # critérios para cada idade-índice testada
-    ├── comparacao_sitio_detalhada.csv
-    ├── sensibilidade_formulacao.csv  # Chapman-Richards × Schumacher
-    ├── sitio_por_talhao.csv
-    ├── feixe_curvas_sitio.png
-    ├── selecao_idade_indice.png
-    └── log_execucao.txt
+├── scripts/
+│   └── 01_validacao_sitio.R
+├── resultados/
+│   ├── tabelas/          # curva-guia, comparação de S, base consolidada
+│   ├── figuras/
+│   └── log_execucao.txt
+└── docs/
+    ├── relatorio.md
+    ├── relatorio.docx
+    └── metodologia_detalhada.md
 ```
 
-## Como executar
+## ▶️ Como executar
 
-Na pasta `desafio-08-validacao-sitio/`:
+A partir da raiz do repositório:
+
+```r
+install.packages(c("readxl", "ggplot2"))
+```
 
 ```bash
-Rscript desafio08_validacao_sitio.R
+LC_ALL=C.UTF-8 Rscript scripts/01_validacao_sitio.R
 ```
 
-O script precisa dos pacotes `readxl` e `ggplot2` e foi testado no R 4.3.3. Em Linux, convém rodar com locale UTF-8 (`LC_ALL=C.UTF-8`) para que os acentos dos gráficos saiam corretos.
+## 📄 Documentos
 
-## Funções do script
+- 📊 [Relatório (Markdown)](docs/relatorio.md)
+- 📄 [Relatório (Word)](docs/relatorio.docx)
+- 🔍 [Metodologia detalhada](docs/metodologia_detalhada.md)
 
-| Função | O que faz |
-|---|---|
-| `ler_base()` | Lê a planilha e padroniza os nomes das colunas |
-| `ajustar_curva_guia()` | Ajusta Chapman-Richards, Hd = b0·(1 − exp(−b1·idade))^b2, aos dados agrupados das 9 parcelas, usando **apenas idade e Hd**, e calcula R², R² ajustado, Syx, Syx%, RMSE e AIC |
-| `calcular_sitio()` | Para uma idade-índice Ii, calcula o S de cada parcela por S = Hd·[(1 − exp(−b1·Ii)) / (1 − exp(−b1·idade))]^b2, usando a medição mais próxima de Ii |
-| `testar_idades_indice()` | Repete o cálculo para Ii de 4 a 7 anos, em passos de 0,5, e resume os desvios em relação ao S fornecido |
-| `gerar_feixe()` | Gera as curvas de índice de local para S = 20, 22, 24 e 26 m |
+## 🧭 Série de desafios
 
-## Critério de seleção da idade-índice
+| # | Desafio | |
+|:-:|---|:-:|
+| 01 | [Diâmetro](https://github.com/danieldias936-cyber/desafio-diametro-eucalipto) | |
+| 02 | [Altura e relação hipsométrica](https://github.com/danieldias936-cyber/desafio_altura) | |
+| 03 | [Volume e forma](https://github.com/danieldias936-cyber/desafio_volume-e-forma) | |
+| 04 | [Volume reduzido e equações de volume](https://github.com/danieldias936-cyber/desafio-04-volume-reduzido-e-tabela) | |
+| 05 | [Taper e sortimento](https://github.com/danieldias936-cyber/desafio_taper_e_sortimento) | |
+| 06 | [Amostragem de Bitterlich](https://github.com/danieldias936-cyber/desafio-06-bitterlich) | |
+| 07 | [Classificação de sítios florestais](https://github.com/danieldias936-cyber/desafio-07-classificacao-sitio) | |
+| **08** | **Validação do índice de sítio** | 📍 você está aqui |
+| 09 | [Crescimento e produção (Clutter)](https://github.com/danieldias936-cyber/desafio-09) | |
 
-A coluna S **não entra no ajuste**. Ela é usada somente depois, para comparar.
+## 👤 Autor
 
-Para cada idade-índice testada, calcula-se o S de cada parcela e compara-se com o S fornecido na base. O critério principal é a **menor soma de quadrados dos desvios**:
-
-SQD(Ii) = Σ (S calculado − S fornecido)², somada sobre as 9 parcelas.
-
-Como apoio, também são registrados o viés médio, o desvio absoluto médio e máximo e o número de parcelas cuja classe mais próxima (20, 22, 24 ou 26 m) coincide com a da base.
-
-**Resultado:** a idade-índice selecionada é **6,5 anos**, com SQD = 23,29 m², viés médio de −0,08 m e 5 das 9 parcelas na mesma classe da base. A seleção é pouco nítida: 5,5 anos (SQD = 26,61) e 7,0 anos (SQD = 29,18) ficam próximos. Os detalhes estão em `relatorio.md`.
-
-## Base para o Desafio 09
-
-O arquivo `saidas/base_consolidada_sitio.csv` mantém a base original (talhao, parcela, id, hd, b, v, s) com o **S fornecido**, conforme a especificação do desafio. O S recalculado e as diferenças estão em `saidas/comparacao_sitio.csv`, para consulta.
+**Daniel Dias** · [@danieldias936-cyber](https://github.com/danieldias936-cyber)  
+Mestrado em Ciências Florestais — ICA/UFMG, Montes Claros (MG)
