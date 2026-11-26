@@ -38,13 +38,13 @@ O ajuste convergiu para a mesma solução a partir de quatro conjuntos de valore
 | **6,5** | **23,29** | **−0,08** | **1,23** | **2,66** | **5** |
 | 7,0 | 29,18 | +0,73 | 1,58 | 3,46 | 4 |
 
-![Seleção da idade-índice](saidas/selecao_idade_indice.png)
+![Seleção da idade-índice](../resultados/figuras/selecao_idade_indice.png)
 
 A idade-índice selecionada é **6,5 anos**. Com idades-índice de 4 a 5 anos, o S calculado fica sistematicamente abaixo do fornecido (viés de −4,6 a −2,8 m), o que indica que o S da base foi definido numa idade mais avançada. A partir de 5,5 anos o SQD cai para a faixa de 23 a 32 m², e as diferenças entre 5,5, 6,0, 6,5 e 7,0 anos são pequenas. A curva do SQD não é suave porque a regra da "medição mais próxima" troca de medição conforme Ii: o talhão 1 não tem medição aos 6,3 anos, por exemplo.
 
 ### 3.3 Feixe de curvas de índice de local
 
-![Feixe de curvas](saidas/feixe_curvas_sitio.png)
+![Feixe de curvas](../resultados/figuras/feixe_curvas_sitio.png)
 
 ### 3.4 Comparação entre o S fornecido e o S recalculado (Ii = 6,5 anos)
 
@@ -77,7 +77,7 @@ S calculado por talhão (média e amplitude entre as parcelas):
 
 **O S da base é atribuído por talhão, não por parcela.** Na base, todas as parcelas de um mesmo talhão têm o mesmo S. Os dados de Hd × idade, porém, mostram dentro do talhão 2 e do talhão 3 parcelas que seguem curvas de classes diferentes: o S calculado varia de 21,5 a 24,6 m no talhão 2 e de 21,3 a 24,7 m no talhão 3. A explicação mais provável é que o S original foi definido no nível do talhão. Pela média das parcelas, isso reproduz os talhões 1, 2 e 6 (médias de 20,6, 22,7 e 26,6 m, que caem nas classes 20, 22 e 26), mas não o talhão 3, cuja média (22,5 m) cairia na classe 22, e não na 24.
 
-**A formulação do modelo não explica as diferenças.** O modelo de Schumacher produziu praticamente o mesmo padrão de SQD que o Chapman-Richards e também indicou 6,5 anos como a melhor idade-índice (SQD = 23,05 m², contra 23,29 m²; arquivo `saidas/sensibilidade_formulacao.csv`). Portanto, não há indício de que o S original tenha vindo de outra forma funcional da curva-guia. O caso do talhão 3 sugere que o S original pode ter usado informação que não está na base: uma curva-guia ajustada com mais parcelas da empresa, outra idade de referência ou um critério de agrupamento de talhões. Isso não pode ser confirmado com os dados disponíveis.
+**A formulação do modelo não explica as diferenças.** O modelo de Schumacher produziu praticamente o mesmo padrão de SQD que o Chapman-Richards e também indicou 6,5 anos como a melhor idade-índice (SQD = 23,05 m², contra 23,29 m²; arquivo `../resultados/tabelas/sensibilidade_formulacao.csv`). Portanto, não há indício de que o S original tenha vindo de outra forma funcional da curva-guia. O caso do talhão 3 sugere que o S original pode ter usado informação que não está na base: uma curva-guia ajustada com mais parcelas da empresa, outra idade de referência ou um critério de agrupamento de talhões. Isso não pode ser confirmado com os dados disponíveis.
 
 **Qualidade dos dados.** Nas parcelas T3-P1 e T3-P3, a Hd diminuiu entre as duas últimas medições (de 21,6 para 21,0 m e de 21,7 para 21,0 m). Uma redução de altura dominante não é biologicamente esperada e costuma indicar erro de medição ou troca das árvores dominantes amostradas. Como a regra da medição mais próxima de 6,5 anos usa justamente essas medições, as duas parcelas recebem S calculado menor, o que contribui para a diferença no talhão 3.
 
