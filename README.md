@@ -12,7 +12,7 @@
 
 ## 📋 Objetivo
 
-Reproduzir de forma independente o índice de sítio (S) das parcelas pelo método da curva-guia, comparar com o S fornecido e gerar a base consolidada usada no [Desafio 09](https://github.com/danieldias936-cyber/desafio-09).
+Reproduzir de forma independente o índice de sítio (S) das parcelas pelo método da curva-guia, comparar com o S fornecido e gerar a base consolidada usada no [Desafio 09](https://github.com/danieldias936-cyber/Desafio-09-Crescimento-e-Producao).
 
 ## 🗂️ Dados
 
@@ -53,7 +53,7 @@ Arquivo: [`dados/Dados_Clutter_original.xlsx`](dados/Dados_Clutter_original.xlsx
 ## 📁 Estrutura do repositório
 
 ```text
-desafio-08/
+Desafio-08-Validacao-do-Sitio/
 ├── dados/
 │   └── Dados_Clutter_original.xlsx
 ├── scripts/
@@ -90,15 +90,15 @@ LC_ALL=C.UTF-8 Rscript scripts/01_validacao_sitio.R
 
 | # | Desafio | |
 |:-:|---|:-:|
-| 01 | [Diâmetro](https://github.com/danieldias936-cyber/desafio-diametro-eucalipto) | |
-| 02 | [Altura e relação hipsométrica](https://github.com/danieldias936-cyber/desafio_altura) | |
-| 03 | [Volume e forma](https://github.com/danieldias936-cyber/desafio_volume-e-forma) | |
-| 04 | [Volume reduzido e equações de volume](https://github.com/danieldias936-cyber/desafio-04-volume-reduzido-e-tabela) | |
-| 05 | [Taper e sortimento](https://github.com/danieldias936-cyber/desafio_taper_e_sortimento) | |
-| 06 | [Amostragem de Bitterlich](https://github.com/danieldias936-cyber/desafio-06-bitterlich) | |
-| 07 | [Classificação de sítios florestais](https://github.com/danieldias936-cyber/desafio-07-classificacao-sitio) | |
+| 01 | [Diâmetro](https://github.com/danieldias936-cyber/Desafio-01-Diametro) | |
+| 02 | [Altura e relação hipsométrica](https://github.com/danieldias936-cyber/Desafio-02-Altura) | |
+| 03 | [Volume e forma](https://github.com/danieldias936-cyber/Desafio-03-Volume-e-Forma) | |
+| 04 | [Volume reduzido e equações de volume](https://github.com/danieldias936-cyber/Desafio-04-Volume-Reduzido-e-Tabela) | |
+| 05 | [Taper e sortimento](https://github.com/danieldias936-cyber/Desafio-05-Taper-e-Sortimento) | |
+| 06 | [Amostragem de Bitterlich](https://github.com/danieldias936-cyber/Desafio-06-Bitterlich) | |
+| 07 | [Classificação de sítios florestais](https://github.com/danieldias936-cyber/Desafio-07-Classificacao-de-Sitios) | |
 | **08** | **Validação do índice de sítio** | 📍 você está aqui |
-| 09 | [Crescimento e produção (Clutter)](https://github.com/danieldias936-cyber/desafio-09) | |
+| 09 | [Crescimento e produção (Clutter)](https://github.com/danieldias936-cyber/Desafio-09-Crescimento-e-Producao) | |
 
 ## 👤 Autor
 
